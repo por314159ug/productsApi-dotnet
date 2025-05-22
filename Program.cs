@@ -6,9 +6,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllers();
 
-// Konfiguracja SqlServer zamiast bazy w pamięci
 builder.Services.AddDbContext<ProductContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("ProductContext")));
+    options.UseInMemoryDatabase("Products"));
 
 // Konfiguracja CORS
 builder.Services.AddCors(options =>
